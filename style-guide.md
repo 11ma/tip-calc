@@ -11,36 +11,24 @@ The designs were created to the following widths:
 
 ### Primary
 
-#### Text
-
-- Very dark desaturated blue: hsl(238, 29%, 16%)
-- Soft red: hsl(14, 88%, 65%)
-
-#### Gradient
-
-Background gradient:
-
-- Soft violet: hsl(273, 75%, 66%)
-- Soft blue: hsl(240, 73%, 65%)
+- Strong cyan: hsl(172, 67%, 45%)
 
 ### Neutral
 
-#### Text
-
-- Very dark grayish blue: hsl(237, 12%, 33%)
-- Dark grayish blue: hsl(240, 6%, 50%)
-
-#### Dividers
-
-- Light grayish blue: hsl(240, 5%, 91%)
+- Very dark cyan: hsl(183, 100%, 15%)
+- Dark grayish cyan: hsl(186, 14%, 43%)
+- Dark grayish cyan: hsl(184, 14%, 56%)
+- Light grayish cyan: hsl(185, 41%, 84%)
+- Light grayish cyan: hsl(189, 41%, 97%)
+- White: hsl(0, 0%, 100%)
 
 ## Typography
 
 ### Body Copy
 
-- Font size: 12px
+- Font size (form inputs): 24px
 
 ### Font
 
-- Family: [Kumbh Sans](https://fonts.google.com/specimen/Kumbh+Sans)
-- Weights: 400, 700
+- Family: [Space Mono](https://fonts.google.com/specimen/Space+Mono)
+- Weights: 400, 500, 700

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 function App() {
-  const [bill, setBill] = useState("");
-  const [customTip, setCustomTip] = useState("");
+  const [bill, setBill] = useState(0);
   const [numberOfPeople, setNumberOfPeople] = useState(0);
+  const [customTip, setCustomTip] = useState("");
   const [tipAmount, setTipAmount] = useState("0.00");
   const [total, setTotal] = useState("0.00");
 
@@ -13,30 +13,34 @@ function App() {
 
   const handleTip = (event) => {
     let tip = Number(event.target.id);
-    let tipAmount = (bill * tip).toFixed(2);
+    let people = Number(numberOfPeople);
+    let tipAmount = ((bill * tip) / people).toFixed(2);
     setTipAmount(tipAmount);
+  };
+
+  const handleNumberOfPeople = (event) => {
+    setNumberOfPeople(event.target.value);
   };
 
   const handleCustomTip = (event) => {
     setCustomTip(event.target.value);
   };
 
-  // const customTipAmount = () => {
-
-  // }
-
-  const handleNumberOfPeople = (event) => {
-    setNumberOfPeople(event.target.value);
-  };
+  // const handleCustomTipAmount = (event) => {
+  //   console.log(event.target.value);
+  // };
 
   return (
     <>
       <h1>SPLITTER</h1>
       <Bill value={bill} onChange={handleBill} />
-      <Tip value={customTip} onChange={handleCustomTip} onClick={handleTip} />
       <NumberOfPeople value={numberOfPeople} onChange={handleNumberOfPeople} />
+      <Tip value={customTip} onChange={handleCustomTip} onClick={handleTip} />
 
-      <h2>tip amount: £{tipAmount}</h2>
+      <div>
+        <h2>tip amount: £{tipAmount}</h2>
+        {/* <input value={tipAmount} onChange={handleCustomTipAmount} readOnly /> */}
+      </div>
       <h2>total: £{total}</h2>
     </>
   );
@@ -74,7 +78,7 @@ const Tip = ({ value, onChange, onClick }) => (
 const NumberOfPeople = ({ value, onChange }) => (
   <>
     <h3>Number of People</h3>
-    <GenericInput value={value} onChange={onChange} />
+    <GenericInput value={value} onChange={onChange} placeholder={0} />
   </>
 );
 

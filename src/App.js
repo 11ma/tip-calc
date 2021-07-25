@@ -1,15 +1,81 @@
+import { useState } from "react";
+
 function App() {
+  const [bill, setBill] = useState("");
+  const [customTip, setCustomTip] = useState("");
+  const [numberOfPeople, setNumberOfPeople] = useState(0);
+  const [tipAmount, setTipAmount] = useState("0.00");
+  const [total, setTotal] = useState("0.00");
+
+  const handleBill = (event) => {
+    setBill(event.target.value);
+  };
+
+  const handleTip = (event) => {
+    let tip = Number(event.target.id);
+    let tipAmount = (bill * tip).toFixed(2);
+    setTipAmount(tipAmount);
+  };
+
+  const handleCustomTip = (event) => {
+    setCustomTip(event.target.value);
+  };
+
+  // const customTipAmount = () => {
+
+  // }
+
+  const handleNumberOfPeople = (event) => {
+    setNumberOfPeople(event.target.value);
+  };
+
   return (
     <>
-      <h1>Hello World</h1>
-      <p>
-        {" "}
-        Bill Select Tip % 5% 10% 15% 25% 50% Custom Number of People Tip Amount
-        / person Total / person Reset
-      </p>
-      <p>Challenge by Frontend Mentor. Coded by Your Name Here. </p>
+      <h1>SPLITTER</h1>
+      <Bill value={bill} onChange={handleBill} />
+      <Tip value={customTip} onChange={handleCustomTip} onClick={handleTip} />
+      <NumberOfPeople value={numberOfPeople} onChange={handleNumberOfPeople} />
+
+      <h2>tip amount: £{tipAmount}</h2>
+      <h2>total: £{total}</h2>
     </>
   );
 }
+
+const GenericInput = ({ value, onChange, placeholder }) => (
+  <input value={value} onChange={onChange} placeholder={placeholder} />
+);
+
+const Bill = ({ value, onChange }) => (
+  <>
+    <h3>Bill</h3>
+    <GenericInput value={value} onChange={onChange} placeholder={0} />
+  </>
+);
+
+const Button = ({ id, value, onClick }) => (
+  <button id={id} onClick={onClick}>
+    {value}
+  </button>
+);
+
+const Tip = ({ value, onChange, onClick }) => (
+  <>
+    <h3>Select tip % </h3>
+    <Button id={0.05} value="5%" onClick={onClick} />
+    <Button id={0.1} value="10%" onClick={onClick} />
+    <Button id={0.15} value="15%" onClick={onClick} />
+    <Button id={0.25} value="25%" onClick={onClick} />
+    <Button id={0.5} value="50%" onClick={onClick} />
+    <GenericInput value={value} onChange={onChange} placeholder={"custom"} />
+  </>
+);
+
+const NumberOfPeople = ({ value, onChange }) => (
+  <>
+    <h3>Number of People</h3>
+    <GenericInput value={value} onChange={onChange} />
+  </>
+);
 
 export default App;

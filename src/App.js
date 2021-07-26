@@ -1,85 +1,64 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
   const [bill, setBill] = useState(0);
-  const [numberOfPeople, setNumberOfPeople] = useState(0);
-  const [customTip, setCustomTip] = useState("");
-  const [tipAmount, setTipAmount] = useState("0.00");
-  const [total, setTotal] = useState("0.00");
+  const [nPeople, setNPeople] = useState(0);
+  const [tip, setTip] = useState(0);
+  const [tipPerPerson, setTipPerPerson] = useState(0);
+  const [totalPerPerson, setTotalPerPerson] = useState(0);
 
   const handleBill = (event) => {
-    setBill(event.target.value);
+    setBill(Number(event.target.value));
+  };
+
+  const handlePeople = (event) => {
+    setNPeople(Number(event.target.value));
   };
 
   const handleTip = (event) => {
-    let tip = Number(event.target.id);
-    let people = Number(numberOfPeople);
-    let tipAmount = ((bill * tip) / people).toFixed(2);
-    setTipAmount(tipAmount);
+    setTip(Number(event.target.value));
   };
 
-  const handleNumberOfPeople = (event) => {
-    setNumberOfPeople(event.target.value);
+  const handleCosts = (event) => {
+    event.preventDefault();
+    let overallTip = bill * (tip / 100);
+    let perPersonTip = overallTip / nPeople;
+    let perPersonCost = bill + overallTip;
+    setTipPerPerson(perPersonTip);
+    setTotalPerPerson(perPersonCost);
   };
 
-  const handleCustomTip = (event) => {
-    setCustomTip(event.target.value);
+  const handleReset = (event) => {
+    event.preventDefault();
+    setTipPerPerson(0);
+    setTotalPerPerson(0);
   };
-
-  // const handleCustomTipAmount = (event) => {
-  //   console.log(event.target.value);
-  // };
-
   return (
     <>
       <h1>SPLITTER</h1>
-      <Bill value={bill} onChange={handleBill} />
-      <NumberOfPeople value={numberOfPeople} onChange={handleNumberOfPeople} />
-      <Tip value={customTip} onChange={handleCustomTip} onClick={handleTip} />
+      <form onSubmit={handleCosts}>
+        <div>
+          <h3>Bill</h3>
+          <input value={bill} onChange={handleBill} />
+        </div>
+        <div>
+          <h3>Number of people</h3>
+          <input value={nPeople} onChange={handlePeople} />
+        </div>
+        <div>
+          <h3>Tip</h3>
+          <input value={tip} onChange={handleTip} />
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <button type="submit" onClick={handleReset}>
+        Reset
+      </button>
 
-      <div>
-        <h2>tip amount: £{tipAmount}</h2>
-        {/* <input value={tipAmount} onChange={handleCustomTipAmount} readOnly /> */}
-      </div>
-      <h2>total: £{total}</h2>
+      <h2>Tip/person: £{tipPerPerson}</h2>
+      <h2>Total/person: £{totalPerPerson}</h2>
     </>
   );
-}
-
-const GenericInput = ({ value, onChange, placeholder }) => (
-  <input value={value} onChange={onChange} placeholder={placeholder} />
-);
-
-const Bill = ({ value, onChange }) => (
-  <>
-    <h3>Bill</h3>
-    <GenericInput value={value} onChange={onChange} placeholder={0} />
-  </>
-);
-
-const Button = ({ id, value, onClick }) => (
-  <button id={id} onClick={onClick}>
-    {value}
-  </button>
-);
-
-const Tip = ({ value, onChange, onClick }) => (
-  <>
-    <h3>Select tip % </h3>
-    <Button id={0.05} value="5%" onClick={onClick} />
-    <Button id={0.1} value="10%" onClick={onClick} />
-    <Button id={0.15} value="15%" onClick={onClick} />
-    <Button id={0.25} value="25%" onClick={onClick} />
-    <Button id={0.5} value="50%" onClick={onClick} />
-    <GenericInput value={value} onChange={onChange} placeholder={"custom"} />
-  </>
-);
-
-const NumberOfPeople = ({ value, onChange }) => (
-  <>
-    <h3>Number of People</h3>
-    <GenericInput value={value} onChange={onChange} placeholder={0} />
-  </>
-);
+};
 
 export default App;

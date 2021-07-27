@@ -15,10 +15,17 @@ const App = () => {
     setNPeople(Number(event.target.value));
   };
 
-  const handleTip = (event) => {
+  const handleCustomTip = (event) => {
     setTip(Number(event.target.value));
   };
 
+  const handlePresetTip = (event) => {
+    let tipValue = Number.parseInt(event.target.textContent);
+
+    setTip(tipValue);
+  };
+
+  // calculate cost
   const handleCosts = (event) => {
     event.preventDefault();
     let overallTip = bill * (tip / 100);
@@ -28,11 +35,20 @@ const App = () => {
     setTotalPerPerson(perPersonCost);
   };
 
-  const handleReset = (event) => {
-    event.preventDefault();
+  // reset
+  const resetAll = () => {
+    setBill(0);
+    setNPeople(0);
+    setTip(0);
     setTipPerPerson(0);
     setTotalPerPerson(0);
   };
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    resetAll();
+  };
+
   return (
     <>
       <h1>SPLITTER</h1>
@@ -47,7 +63,8 @@ const App = () => {
         </div>
         <div>
           <h3>Tip</h3>
-          <input value={tip} onChange={handleTip} />
+          <button onClick={handlePresetTip}>5%</button>
+          <input value={tip} onChange={handleCustomTip} />
         </div>
         <button type="submit">Calculate</button>
       </form>

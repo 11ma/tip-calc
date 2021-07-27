@@ -21,8 +21,6 @@ const App = () => {
 
   const handlePresetTip = (event) => {
     let tipValue = Number.parseInt(event.target.textContent);
-
-    setTip(tipValue);
   };
 
   // calculate cost

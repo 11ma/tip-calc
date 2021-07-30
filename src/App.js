@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Tip from "./component/Tip";
 
 const App = () => {
   const [bill, setBill] = useState(0);
@@ -38,7 +39,7 @@ const App = () => {
     let overallTip = bill * tip;
     let perPersonTip = overallTip / nPeople;
     let perPersonCost = bill + overallTip;
-    setTipPerPerson(perPersonTip);
+    setTipPerPerson(perPersonTip ? perPersonTip : 0);
     setTotalPerPerson(perPersonCost);
   };
 
@@ -58,7 +59,7 @@ const App = () => {
 
   return (
     <>
-      <h1>SPLITTER</h1>
+      <h1>Test SPLITTER Branch</h1>
       <form onSubmit={HandleCosts}>
         <div>
           <h3>Bill</h3>
@@ -68,16 +69,8 @@ const App = () => {
           <h3>Number of people</h3>
           <input value={nPeople} onChange={handlePeople} />
         </div>
-        <div>
-          <h3>Tip</h3>
-          <button onClick={handlePresetTip}>5%</button>
-          <button onClick={handlePresetTip}>10%</button>
-          <button onClick={handlePresetTip}>15%</button>
-          <button onClick={handlePresetTip}>25%</button>
-          <button onClick={handlePresetTip}>50%</button>
-          <input onChange={handleCustomTip} placeholder="custom" />
-          <h2>tip is {tip * 100}%</h2>
-        </div>
+        <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
+        <h2>tip is {tip * 100}%</h2>
         <button type="submit">Calculate</button>
       </form>
       <button type="submit" onClick={handleReset}>

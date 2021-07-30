@@ -35,7 +35,8 @@ const App = () => {
     event.preventDefault();
     let overallTip = bill * tip;
     let perPersonTip = overallTip / nPeople;
-    let perPersonCost = bill + overallTip;
+    let overallCost = bill + overallTip;
+    let perPersonCost = overallCost / nPeople;
     setTipPerPerson(perPersonTip ? perPersonTip : 0);
     setTotalPerPerson(perPersonCost);
   };
@@ -61,14 +62,14 @@ const App = () => {
         <People value={nPeople} onChange={handlePeople} />
         <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
         {/* <h2>tip is {tip * 100}%</h2> */}
+        <br />
+        <ValuePerPerson
+          tipPerPerson={tipPerPerson}
+          totalPerPerson={totalPerPerson}
+        />
         <button type="submit">Calculate</button>
+        <Reset onClick={handleReset} />
       </form>
-      <Reset onClick={handleReset} />
-
-      <ValuePerPerson
-        tipPerPerson={tipPerPerson}
-        totalPerPerson={totalPerPerson}
-      />
     </>
   );
 };

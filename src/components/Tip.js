@@ -1,7 +1,7 @@
 const Tip = ({ onClick, onChange, placeholder = "custom" }) => {
   return (
     <>
-      <h3>Tip: </h3>
+      <h3>select tip % </h3>
       <button onClick={onClick}>5%</button>
       <button onClick={onClick}>10%</button>
       <button onClick={onClick}>15%</button>

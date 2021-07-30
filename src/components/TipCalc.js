@@ -61,14 +61,14 @@ const TipCalc = () => {
         <People value={nPeople} onChange={handlePeople} />
         <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
         {/* <h2>tip is {tip * 100}%</h2> */}
-        <button type="submit">Calculate</button>
-      </form>
-      <Reset onClick={handleReset} />
 
-      <ValuePerPerson
-        tipPerPerson={tipPerPerson}
-        totalPerPerson={totalPerPerson}
-      />
+        <ValuePerPerson
+          tipPerPerson={tipPerPerson}
+          totalPerPerson={totalPerPerson}
+        />
+        <button type="submit">Calculate</button>
+        <Reset onClick={handleReset} />
+      </form>
     </>
   );
 };

@@ -5,7 +5,7 @@ import Reset from "./Reset";
 import People from "./People";
 import Tip from "./Tip";
 
-const App = () => {
+const TipCalc = () => {
   const [bill, setBill] = useState(0);
   const [nPeople, setNPeople] = useState(0);
   const [tip, setTip] = useState(0);
@@ -73,4 +73,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default TipCalc;

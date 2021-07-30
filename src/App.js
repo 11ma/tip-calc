@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [bill, setBill] = useState(0);
@@ -6,6 +6,10 @@ const App = () => {
   const [tip, setTip] = useState(0);
   const [tipPerPerson, setTipPerPerson] = useState(0);
   const [totalPerPerson, setTotalPerPerson] = useState(0);
+
+  useEffect(() => {
+    console.log(tip);
+  }, [tip]);
 
   const handleBill = (event) => {
     setBill(Number(event.target.value));
@@ -16,17 +20,22 @@ const App = () => {
   };
 
   const handleCustomTip = (event) => {
-    setTip(Number(event.target.value));
+    let tipValue = Number(event.target.value) / 100;
+    setTip(tipValue);
   };
 
   const handlePresetTip = (event) => {
-    let tipValue = Number.parseInt(event.target.textContent);
+    let tipValue = Number.parseInt(event.target.textContent) / 100;
+    setTip(tipValue);
   };
 
   // calculate cost
-  const handleCosts = (event) => {
+  const HandleCosts = (event) => {
     event.preventDefault();
-    let overallTip = bill * (tip / 100);
+
+    console.log(tip);
+
+    let overallTip = bill * tip;
     let perPersonTip = overallTip / nPeople;
     let perPersonCost = bill + overallTip;
     setTipPerPerson(perPersonTip);
@@ -50,7 +59,7 @@ const App = () => {
   return (
     <>
       <h1>SPLITTER</h1>
-      <form onSubmit={handleCosts}>
+      <form onSubmit={HandleCosts}>
         <div>
           <h3>Bill</h3>
           <input value={bill} onChange={handleBill} />
@@ -62,7 +71,12 @@ const App = () => {
         <div>
           <h3>Tip</h3>
           <button onClick={handlePresetTip}>5%</button>
-          <input value={tip} onChange={handleCustomTip} />
+          <button onClick={handlePresetTip}>10%</button>
+          <button onClick={handlePresetTip}>15%</button>
+          <button onClick={handlePresetTip}>25%</button>
+          <button onClick={handlePresetTip}>50%</button>
+          <input onChange={handleCustomTip} placeholder="custom" />
+          <h2>tip is {tip * 100}%</h2>
         </div>
         <button type="submit">Calculate</button>
       </form>
@@ -70,8 +84,8 @@ const App = () => {
         Reset
       </button>
 
-      <h2>Tip/person: £{tipPerPerson}</h2>
-      <h2>Total/person: £{totalPerPerson}</h2>
+      <h2>Tip/person: £{tipPerPerson.toFixed(2)}</h2>
+      <h2>Total/person: £{totalPerPerson.toFixed(2)}</h2>
     </>
   );
 };

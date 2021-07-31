@@ -1,7 +1,12 @@
-const People = ({ value, onChange }) => (
+import styles from "../modules/People.module.css";
+
+const People = ({ value, onChange, src }) => (
   <div>
     <h3>Number of people</h3>
-    <input value={value} onChange={onChange} required />
+    <div className={styles.personInput}>
+      <img src={src} />
+      <input value={value} onChange={onChange} required />
+    </div>
   </div>
 );
 

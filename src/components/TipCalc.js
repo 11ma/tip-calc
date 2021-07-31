@@ -4,7 +4,12 @@ import ValuePerPerson from "./ValuePerPerson";
 import Reset from "./Reset";
 import People from "./People";
 import Tip from "./Tip";
+
 import styles from "../modules/TipCalc.module.css";
+
+// icons
+import Person from "../assets/images/icon-person.svg";
+import Dollar from "../assets/images/icon-dollar.svg";
 
 const TipCalc = () => {
   const [bill, setBill] = useState(0);
@@ -34,10 +39,11 @@ const TipCalc = () => {
   // calculate cost
   const HandleCosts = (event) => {
     event.preventDefault();
+
     let overallTip = bill * tip;
-    let perPersonTip = overallTip / nPeople;
+    let perPersonTip = nPeople ? overallTip / nPeople : 0;
     let overallCost = bill + overallTip;
-    let perPersonCost = overallCost / nPeople;
+    let perPersonCost = nPeople ? overallCost / nPeople : 0;
     setTipPerPerson(perPersonTip ? perPersonTip : 0);
     setTotalPerPerson(perPersonCost ? perPersonCost : 0);
   };
@@ -55,13 +61,13 @@ const TipCalc = () => {
   return (
     <>
       <form className={styles.container} onSubmit={HandleCosts}>
-        <div>
-          <Bill value={bill} onChange={handleBill} />
-          <People value={nPeople} onChange={handlePeople} />
+        <div className={styles.InputContainer}>
+          <Bill value={bill} onChange={handleBill} src={Dollar} />
+          <People value={nPeople} onChange={handlePeople} src={Person} />
           <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
         </div>
         {/* <h3>tip value is {tip * 100}%</h3> */}
-        <div>
+        <div className={styles.OutputContainer}>
           <ValuePerPerson
             tipPerPerson={tipPerPerson}
             totalPerPerson={totalPerPerson}

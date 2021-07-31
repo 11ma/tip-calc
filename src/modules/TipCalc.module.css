@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  color: hsl(183, 100%, 15%);
+  background-color: white;
+  border-radius: 20px;
+  font-size: 24px;
+  padding: 40px;
+}

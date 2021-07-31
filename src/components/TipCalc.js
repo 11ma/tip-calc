@@ -4,8 +4,9 @@ import ValuePerPerson from "./ValuePerPerson";
 import Reset from "./Reset";
 import People from "./People";
 import Tip from "./Tip";
+import styles from "../modules/TipCalc.module.css";
 
-const App = () => {
+const TipCalc = () => {
   const [bill, setBill] = useState(0);
   const [nPeople, setNPeople] = useState(0);
   const [tip, setTip] = useState(0);
@@ -21,7 +22,7 @@ const App = () => {
   };
 
   const handleCustomTip = (event) => {
-    let tipValue = Number(event.target.value) / 100;
+    let tipValue = Number.parseInt(event.target.value) / 100;
     setTip(tipValue);
   };
 
@@ -38,11 +39,12 @@ const App = () => {
     let overallCost = bill + overallTip;
     let perPersonCost = overallCost / nPeople;
     setTipPerPerson(perPersonTip ? perPersonTip : 0);
-    setTotalPerPerson(perPersonCost);
+    setTotalPerPerson(perPersonCost ? perPersonCost : 0);
   };
 
   // reset
-  const resetAll = () => {
+  const handleReset = (event) => {
+    event.preventDefault();
     setBill(0);
     setNPeople(0);
     setTip(0);
@@ -50,28 +52,26 @@ const App = () => {
     setTotalPerPerson(0);
   };
 
-  const handleReset = (event) => {
-    event.preventDefault();
-    resetAll();
-  };
-
   return (
     <>
-      <form onSubmit={HandleCosts}>
-        <Bill value={bill} onChange={handleBill} />
-        <People value={nPeople} onChange={handlePeople} />
-        <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
-        {/* <h2>tip is {tip * 100}%</h2> */}
-        <br />
-        <ValuePerPerson
-          tipPerPerson={tipPerPerson}
-          totalPerPerson={totalPerPerson}
-        />
-        <button type="submit">Calculate</button>
-        <Reset onClick={handleReset} />
+      <form className={styles.container} onSubmit={HandleCosts}>
+        <div>
+          <Bill value={bill} onChange={handleBill} />
+          <People value={nPeople} onChange={handlePeople} />
+          <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
+        </div>
+        {/* <h3>tip value is {tip * 100}%</h3> */}
+        <div>
+          <ValuePerPerson
+            tipPerPerson={tipPerPerson}
+            totalPerPerson={totalPerPerson}
+          />
+          <button type="submit">Calculate</button>
+          <Reset onClick={handleReset} />
+        </div>
       </form>
     </>
   );
 };
 
-export default App;
+export default TipCalc;

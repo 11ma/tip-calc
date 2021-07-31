@@ -13,8 +13,8 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.AppContainer {
+  background-color: hsl(185, 41%, 84%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,15 +24,11 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Title {
+  color: hsl(183, 100%, 15%);
+  width: 215px;
+  height: auto;
+  overflow-wrap: break-word;
+  letter-spacing: 20px;
+  font-size: 50px;
 }

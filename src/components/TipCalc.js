@@ -18,8 +18,12 @@ const TipCalc = () => {
   const [tipPerPerson, setTipPerPerson] = useState(0);
   const [totalPerPerson, setTotalPerPerson] = useState(0);
 
+  // Validation with REGEX
+  const rgx = /^[+-]?\d*(?:[.,]\d*)?$/;
+
   const handleBill = (event) => {
-    setBill(Number(event.target.value));
+    let billInput = event.target.value;
+    if (rgx.test(billInput)) setBill(billInput);
   };
 
   const handlePeople = (event) => {
@@ -42,7 +46,7 @@ const TipCalc = () => {
 
     let overallTip = bill * tip;
     let perPersonTip = nPeople ? overallTip / nPeople : 0;
-    let overallCost = bill + overallTip;
+    let overallCost = Number(bill) + Number(overallTip);
     let perPersonCost = nPeople ? overallCost / nPeople : 0;
     setTipPerPerson(perPersonTip ? perPersonTip : 0);
     setTotalPerPerson(perPersonCost ? perPersonCost : 0);

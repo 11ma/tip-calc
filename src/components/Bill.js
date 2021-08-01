@@ -5,12 +5,7 @@ const Bill = ({ value, onChange, src }) => (
     <h3>Bill</h3>
     <div className={styles.InputContainer}>
       <img src={src} />
-      <input
-        className={styles.Input}
-        value={value}
-        onChange={onChange}
-        required
-      />
+      <input value={value} onChange={onChange} required />
     </div>
   </div>
 );

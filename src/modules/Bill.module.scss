@@ -3,7 +3,7 @@
   background-color: hsl(189, 41%, 97%);
   padding: 5px 15px;
 
-  .Input {
+  input {
     border: none;
     text-align: right;
     font-size: 24px;
@@ -12,5 +12,8 @@
     /* width: 250px; */
     /* height: 50px; */
     /* padding-right: 10px; */
+  }
+  input:focus {
+    outline: none;
   }
 }

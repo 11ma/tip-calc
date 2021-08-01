@@ -5,7 +5,7 @@ import Reset from "./Reset";
 import People from "./People";
 import Tip from "./Tip";
 
-import styles from "../modules/TipCalc.module.css";
+import styles from "../modules/TipCalc.module.scss";
 
 // icons
 import Person from "../assets/images/icon-person.svg";

@@ -1,4 +1,4 @@
-import styles from "../modules/Bill.module.css";
+import styles from "../modules/Bill.module.scss";
 
 const Bill = ({ value, onChange, src }) => (
   <div>

@@ -1,7 +1,7 @@
-import styles from "../modules/ValuePerPerson.module.sass";
+import styles from "../modules/ValuePerPerson.module.scss";
 
 const ValuePerPerson = ({ tipPerPerson, totalPerPerson }) => (
-  <div>
+  <>
     <div className={styles.ValuePerPersonLayout}>
       <div>
         <h2 className={styles.TipAmountTotal}>Tip Amount </h2>
@@ -16,7 +16,7 @@ const ValuePerPerson = ({ tipPerPerson, totalPerPerson }) => (
       </div>
       <h2 className={styles.figures}>£{totalPerPerson.toFixed(2)}</h2>
     </div>
-  </div>
+  </>
 );
 
 export default ValuePerPerson;

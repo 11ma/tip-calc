@@ -1,5 +1,5 @@
 import TipCalc from "./components/TipCalc";
-import styles from "./modules/App.module.css";
+import styles from "./modules/App.module.scss";
 
 const App = () => (
   <div className={styles.AppContainer}>

@@ -1,4 +1,4 @@
-import { Input, InputContainer } from "../modules/Bill.module.css";
+import { Input, InputContainer } from "../modules/Bill.module.scss";
 
 const People = ({ value, onChange, src }) => (
   <div>

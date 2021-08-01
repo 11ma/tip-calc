@@ -1,11 +1,11 @@
-import styles from "../modules/People.module.css";
+import { Input, InputContainer } from "../modules/Bill.module.css";
 
 const People = ({ value, onChange, src }) => (
   <div>
     <h3>Number of people</h3>
-    <div className={styles.personInput}>
+    <div className={InputContainer}>
       <img src={src} />
-      <input value={value} onChange={onChange} required />
+      <input className={Input} value={value} onChange={onChange} required />
     </div>
   </div>
 );

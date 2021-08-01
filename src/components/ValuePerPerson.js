@@ -1,4 +1,4 @@
-import styles from "../modules/ValuePerPerson.module.css";
+import styles from "../modules/ValuePerPerson.module.sass";
 
 const ValuePerPerson = ({ tipPerPerson, totalPerPerson }) => (
   <div>

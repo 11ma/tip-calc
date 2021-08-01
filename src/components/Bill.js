@@ -1,8 +1,17 @@
+import styles from "../modules/Bill.module.css";
+
 const Bill = ({ value, onChange, src }) => (
   <div>
     <h3>Bill</h3>
-    <img src={src} />
-    <input value={value} onChange={onChange} required />
+    <div className={styles.InputContainer}>
+      <img src={src} />
+      <input
+        className={styles.Input}
+        value={value}
+        onChange={onChange}
+        required
+      />
+    </div>
   </div>
 );
 

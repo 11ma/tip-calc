@@ -72,8 +72,11 @@ const TipCalc = () => {
             tipPerPerson={tipPerPerson}
             totalPerPerson={totalPerPerson}
           />
-          <button type="submit">Calculate</button>
-          <Reset onClick={handleReset} />
+
+          <div className={styles.ResetCalc}>
+            <button type="submit">Calculate</button>
+            <Reset onClick={handleReset} />
+          </div>
         </div>
       </form>
     </>

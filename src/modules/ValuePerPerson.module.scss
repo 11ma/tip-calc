@@ -9,7 +9,7 @@
   }
 
   .TipAmountTotal {
-    font-size: 20px;
+    font-size: 15px;
   }
 
   h3 {
@@ -20,5 +20,14 @@
   .figures {
     font-size: 50px;
     color: hsl(172, 67%, 45%);
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .ValuePerPersonLayout {
+    .figures {
+      font-size: 25px;
+      color: hsl(172, 67%, 45%);
+    }
   }
 }

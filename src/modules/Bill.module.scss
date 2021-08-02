@@ -1,0 +1,30 @@
+.Title {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.InputContainer {
+  border: 1px solid hsl(189, 41%, 97%);
+  background-color: hsl(189, 41%, 97%);
+  padding: 5px 15px;
+  border-radius: 5px;
+
+  input {
+    border: none;
+    text-align: right;
+    font-size: 24px;
+    background-color: hsl(189, 41%, 97%);
+    color: hsl(183, 100%, 15%);
+    /* width: 250px; */
+    /* height: 50px; */
+    /* padding-right: 10px; */
+  }
+  input:focus {
+    outline: none;
+  }
+}
+
+.InputError {
+  border: 1px solid red;
+}

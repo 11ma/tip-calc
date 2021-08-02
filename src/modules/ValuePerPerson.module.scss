@@ -1,0 +1,24 @@
+.ValuePerPersonLayout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: 0.5em 0; */
+
+  .ValuePerPersonLayout > * {
+    align-self: center;
+  }
+
+  .TipAmountTotal {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 15px;
+    color: hsl(184, 14%, 56%);
+  }
+
+  .figures {
+    font-size: 50px;
+    color: hsl(172, 67%, 45%);
+  }
+}

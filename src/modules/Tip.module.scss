@@ -1,0 +1,31 @@
+.TipContainer {
+  h3 {
+    font-size: 15px;
+  }
+
+  button,
+  input {
+    border: none;
+    font-size: 24px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 0;
+  }
+  button {
+    border: none;
+    background-color: hsl(183, 100%, 15%);
+    color: hsl(0, 0%, 100%);
+  }
+
+  .Grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+  }
+
+  input {
+    background-color: hsl(189, 41%, 97%);
+    color: hsl(183, 100%, 15%);
+    width: 100px;
+  }
+}

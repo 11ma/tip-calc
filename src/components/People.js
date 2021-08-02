@@ -1,7 +1,26 @@
-const People = ({ value, onChange }) => (
+import classNames from "classnames";
+import {
+  Title,
+  Input,
+  InputContainer,
+  InputError,
+} from "../modules/Bill.module.scss";
+// import styles from "../modules/People.module.scss";
+
+const People = ({ value, onChange, src, validate }) => (
   <div>
-    <h3>Number of people</h3>
-    <input value={value} onChange={onChange} />
+    <div className={Title}>
+      <h3>Number of people</h3>
+      {validate ? <h3>Can't be zero</h3> : ""}
+    </div>
+    <div
+      className={classNames(InputContainer, {
+        [InputError]: validate === true,
+      })}
+    >
+      <img src={src} />
+      <input className={Input} value={value} onChange={onChange} required />
+    </div>
   </div>
 );
 

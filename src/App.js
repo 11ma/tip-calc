@@ -1,13 +1,11 @@
 import TipCalc from "./components/TipCalc";
-import "./App.css";
+import styles from "./modules/App.module.scss";
 
-const App = () => {
-  return (
-    <div className="App-header">
-      <h1>SPLITTER</h1>
-      <TipCalc />
-    </div>
-  );
-};
+const App = () => (
+  <div className={styles.AppContainer}>
+    <h1 className={styles.Title}>SPLITTER</h1>
+    <TipCalc />
+  </div>
+);
 
 export default App;

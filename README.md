@@ -33,7 +33,6 @@ Users should be able to:
 
 ### Built with
 
-- Semantic HTML5 markup
 - Flexbox
 - CSS Grid
 - [React](https://reactjs.org/) - JS library

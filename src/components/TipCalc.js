@@ -97,7 +97,7 @@ const TipCalc = () => {
           />
 
           <div className={styles.ResetCalc}>
-            <button type="submit">Calculate</button>
+            <button type="submit">calculate</button>
             <Reset onClick={handleReset} />
           </div>
         </div>

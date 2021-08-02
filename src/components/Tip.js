@@ -1,6 +1,6 @@
 import { TipContainer, Grid } from "../modules/Tip.module.scss";
 
-const Tip = ({ onClick, onChange, placeholder = "Custom" }) => (
+const Tip = ({ onClick, onChange, placeholder = "custom" }) => (
   <div className={TipContainer}>
     <h3>select tip % </h3>
     <div className={Grid}>

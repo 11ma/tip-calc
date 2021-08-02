@@ -1,7 +1,14 @@
+.Title {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .InputContainer {
   border: 1px solid hsl(189, 41%, 97%);
   background-color: hsl(189, 41%, 97%);
   padding: 5px 15px;
+  border-radius: 5px;
 
   input {
     border: none;
@@ -16,4 +23,8 @@
   input:focus {
     outline: none;
   }
+}
+
+.InputError {
+  border: 1px solid red;
 }

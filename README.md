@@ -27,7 +27,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/tip-calculator-s6IZA7RUC)
-- Live Site URL: [Tip Calc](https://tipsplittr.netlify.app/)
+- Live Site URL: [Tip Splittr](https://tipsplittr.netlify.app/)
 
 ## My process
 

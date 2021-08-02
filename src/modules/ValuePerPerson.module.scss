@@ -1,12 +1,12 @@
+.ValuePerPersonLayout > * {
+  align-self: center;
+  // margin: 10px;
+}
+
 .ValuePerPersonLayout {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin: 0.5em 0; */
-
-  .ValuePerPersonLayout > * {
-    align-self: center;
-  }
 
   .TipAmountTotal {
     font-size: 15px;
@@ -20,14 +20,12 @@
   .figures {
     font-size: 50px;
     color: hsl(172, 67%, 45%);
+    // margin: 0;
   }
 }
 
 @media only screen and (max-width: 880px) {
   .ValuePerPersonLayout {
-    .figures {
-      font-size: 25px;
-      color: hsl(172, 67%, 45%);
-    }
+    margin: 10px;
   }
 }

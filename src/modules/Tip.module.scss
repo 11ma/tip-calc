@@ -1,6 +1,7 @@
 .TipContainer {
   h3 {
     font-size: 15px;
+    margin: 10px 0;
   }
 
   button,
@@ -36,6 +37,10 @@
     input {
       // font-size: 20px;
       padding: 5px;
+    }
+
+    .Grid {
+      margin: 10px 0;
     }
   }
 }

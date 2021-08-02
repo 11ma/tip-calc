@@ -10,8 +10,8 @@ import {
 const People = ({ value, onChange, src, validate }) => (
   <div>
     <div className={Title}>
-      <h3>Number of people</h3>
-      {validate ? <h3>Can't be zero</h3> : ""}
+      <h3>number of people</h3>
+      {validate ? <h3>can't be zero</h3> : ""}
     </div>
     <div
       className={classNames(InputContainer, {

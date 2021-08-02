@@ -5,10 +5,10 @@
 }
 
 .InputContainer {
-  border: 1px solid hsl(189, 41%, 97%);
   background-color: hsl(189, 41%, 97%);
   padding: 5px 15px;
   border-radius: 5px;
+  margin: 15px 0;
 
   input {
     border: none;
@@ -16,9 +16,6 @@
     font-size: 24px;
     background-color: hsl(189, 41%, 97%);
     color: hsl(183, 100%, 15%);
-    /* width: 250px; */
-    /* height: 50px; */
-    /* padding-right: 10px; */
   }
   input:focus {
     outline: none;
@@ -27,4 +24,12 @@
 
 .InputError {
   border: 1px solid red;
+}
+
+@media only screen and (max-width: 880px) {
+  .InputContainer {
+    background-color: hsl(189, 41%, 97%);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
 }

@@ -3,45 +3,51 @@
   color: hsl(183, 100%, 15%);
   background-color: hsl(0, 0%, 100%);
   border-radius: 20px;
-  font-size: 20px;
+  font-size: 15px;
   padding: 1.5em;
+
+  .InputContainer {
+    margin: 1em;
+  }
+
+  .OutputContainer {
+    background-color: hsl(183, 100%, 15%);
+    color: hsl(0, 0%, 100%);
+    padding: 1.5em;
+    border-radius: 20px;
+    /* margin: 1em; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ResetCalc {
+    align-self: center;
+    justify-content: end;
+  }
+
+  .ResetCalc > * {
+    margin: 0.5em;
+    background-color: hsl(172, 67%, 45%);
+    border: none;
+    color: hsl(183, 100%, 15%);
+    padding: 0.5em 2em;
+    text-align: center;
+    /* text-decoration: none; */
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .ResetCalc > *:hover {
+    background-color: hsl(186, 14%, 43%);
+  }
 }
 
-.InputContainer {
-  margin: 1em;
-}
-
-.OutputContainer {
-  border: 1px solid black;
-  background-color: hsl(183, 100%, 15%);
-  color: hsl(0, 0%, 100%);
-  padding: 1.5em;
-  border-radius: 20px;
-  /* margin: 1em; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.ResetCalc {
-  align-self: center;
-  justify-content: end;
-}
-
-.ResetCalc > * {
-  margin: 0.5em;
-  background-color: hsl(172, 67%, 45%);
-  border: none;
-  color: hsl(183, 100%, 15%);
-  padding: 0.5em 2em;
-  text-align: center;
-  /* text-decoration: none; */
-  display: inline-block;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.ResetCalc > *:hover {
-  background-color: hsl(186, 14%, 43%);
+@media only screen and (max-width: 880px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
 }

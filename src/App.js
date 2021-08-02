@@ -1,9 +1,9 @@
 import TipCalc from "./components/TipCalc";
-import styles from "./modules/App.module.scss";
+import { AppContainer, Title } from "./modules/App.module.scss";
 
 const App = () => (
-  <div className={styles.AppContainer}>
-    <h1 className={styles.Title}>SPLITTER</h1>
+  <div className={AppContainer}>
+    <h1 className={Title}>SPLITTER</h1>
     <TipCalc />
   </div>
 );

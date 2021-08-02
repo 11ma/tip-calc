@@ -1,6 +1,7 @@
 .TipContainer {
   h3 {
     font-size: 15px;
+    margin: 10px 0;
   }
 
   button,
@@ -27,5 +28,19 @@
     background-color: hsl(189, 41%, 97%);
     color: hsl(183, 100%, 15%);
     width: 100px;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .TipContainer {
+    button,
+    input {
+      // font-size: 20px;
+      padding: 5px;
+    }
+
+    .Grid {
+      margin: 10px 0;
+    }
   }
 }

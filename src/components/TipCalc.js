@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Bill from "./Bill";
 import ValuePerPerson from "./ValuePerPerson";
-import Reset from "./Reset";
 import People from "./People";
 import Tip from "./Tip";
 
@@ -12,11 +11,9 @@ import Person from "../assets/images/icon-person.svg";
 import Dollar from "../assets/images/icon-dollar.svg";
 
 const TipCalc = () => {
-  const [bill, setBill] = useState(0);
-  const [nPeople, setNPeople] = useState(0);
   const [tip, setTip] = useState(0);
-  const [tipPerPerson, setTipPerPerson] = useState(0);
-  const [totalPerPerson, setTotalPerPerson] = useState(0);
+  const [bill, setBill] = useState(0);
+  const [people, setPeople] = useState(0);
   const [validatePeople, setValidatePeople] = useState(false);
   const [validateBill, setValidateBill] = useState(false);
 
@@ -24,14 +21,15 @@ const TipCalc = () => {
   const rgx = /^[+-]?\d*(?:[.,]\d*)?$/;
 
   const handleBill = (event) => {
-    setValidateBill(false);
     let billInput = event.target.value;
+    billInput !== 0 ? setValidateBill(false) : setValidateBill(true);
     if (rgx.test(billInput)) setBill(billInput);
   };
 
   const handlePeople = (event) => {
     setValidatePeople(false);
-    setNPeople(Number(event.target.value));
+    const peopleValue = event.target.value;
+    setPeople(Number(peopleValue));
   };
 
   const handleCustomTip = (event) => {
@@ -44,64 +42,68 @@ const TipCalc = () => {
     setTip(tipValue);
   };
 
-  // calculate cost
-  const HandleCosts = (event) => {
-    event.preventDefault();
-    if (!bill) setValidateBill(true);
-    if (!nPeople) setValidatePeople(true);
-    else {
-      let overallTip = bill * tip;
-      let perPersonTip = overallTip / nPeople;
-      let overallCost = Number(bill) + Number(overallTip);
-      let perPersonCost = overallCost / nPeople;
-      setTipPerPerson(perPersonTip ? perPersonTip : 0);
-      setTotalPerPerson(perPersonCost ? perPersonCost : 0);
-    }
+  const tipValuePerPerson = () => {
+    const tipAndBill = bill * tip;
+    return isFinite(tipAndBill / people) ? tipAndBill / people : 0;
   };
+
+  const billPerPerson = () => {
+    return isFinite(bill / people) ? bill / people : 0;
+  };
+
+  const billAmountPerPerson = () => {
+    return tipValuePerPerson() + billPerPerson();
+  };
+
+  const checkNum = (value) => {
+    return isNaN(value) ? 0 : value;
+  };
+
+  //   if (!bill) setValidateBill(true);
+  //   if (!people) setValidatePeople(true);
 
   // reset
   const handleReset = (event) => {
     event.preventDefault();
     setBill(0);
-    setNPeople(0);
+    setPeople(0);
     setTip(0);
-    setTipPerPerson(0);
-    setTotalPerPerson(0);
     setValidateBill(false);
     setValidatePeople(false);
   };
 
   return (
     <>
-      <form className={styles.container} onSubmit={HandleCosts}>
+      <section className={styles.container}>
         <div className={styles.InputContainer}>
           <Bill
             value={bill}
             onChange={handleBill}
-            src={Dollar}
+            imgSrc={Dollar}
             validate={validateBill}
           />
+          <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
           <People
-            value={nPeople}
+            value={isNaN(people) ? 0 : people}
             onChange={handlePeople}
-            src={Person}
+            imgSrc={Person}
             validate={validatePeople}
           />
-          <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
         </div>
-        {/* <h3>tip value is {tip * 100}%</h3> */}
+
         <div className={styles.OutputContainer}>
           <ValuePerPerson
-            tipPerPerson={tipPerPerson}
-            totalPerPerson={totalPerPerson}
+            tipPerPerson={checkNum(tipValuePerPerson())}
+            totalPerPerson={checkNum(billAmountPerPerson())}
           />
 
           <div className={styles.ResetCalc}>
-            <button type="submit">Calculate</button>
-            <Reset onClick={handleReset} />
+            <button type="submit" onClick={handleReset}>
+              Reset
+            </button>
           </div>
         </div>
-      </form>
+      </section>
     </>
   );
 };

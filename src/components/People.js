@@ -7,7 +7,7 @@ import {
 } from "../modules/Bill.module.scss";
 // import styles from "../modules/People.module.scss";
 
-const People = ({ value, onChange, src, validate }) => (
+const People = ({ value, onChange, imgSrc, validate }) => (
   <div>
     <div className={Title}>
       <h3>number of people</h3>
@@ -18,7 +18,7 @@ const People = ({ value, onChange, src, validate }) => (
         [InputError]: validate === true,
       })}
     >
-      <img src={src} />
+      <img src={imgSrc} alt="person icon" />
       <input className={Input} value={value} onChange={onChange} required />
     </div>
   </div>

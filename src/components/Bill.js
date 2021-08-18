@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Title, InputContainer, InputError } from "../modules/Bill.module.scss";
 
-const Bill = ({ value, onChange, src, validate }) => (
+const Bill = ({ value, onChange, imgSrc, validate }) => (
   <div>
     <div className={Title}>
       <h3>bill</h3>
@@ -12,7 +12,7 @@ const Bill = ({ value, onChange, src, validate }) => (
         [InputError]: validate === true,
       })}
     >
-      <img src={src} />
+      <img src={imgSrc} alt="dollar bill" />
       <input value={value} onChange={onChange} required />
     </div>
   </div>

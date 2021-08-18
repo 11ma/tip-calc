@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Bill from "./Bill";
+import InputComponent from "./InputComponent";
 import ValuePerPerson from "./ValuePerPerson";
-import People from "./People";
 import Tip from "./Tip";
 import { checkNum, checkInfinity } from "./Utilities";
 
@@ -66,22 +65,28 @@ const TipCalc = () => {
     <>
       <section className={styles.container}>
         <section className={styles.InputContainer}>
-          <Bill
+          <InputComponent
+            inputName="bill"
             value={bill}
             onChange={handleBill}
             imgSrc={Dollar}
+            alt="dollar bill"
             // validate={validateBill}
+            errorMessage="can't be zero"
           />
           <Tip
             onClick={handlePresetTip}
             onChange={handleCustomTip}
             value={checkNum(customInput)}
           />
-          <People
+          <InputComponent
+            inputName="number of people"
             value={checkNum(people)}
             onChange={handlePeople}
             imgSrc={Person}
+            alt="person icon"
             // validate={validatePeople}
+            errorMessage="can't be zero"
           />
         </section>
 

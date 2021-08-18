@@ -4,24 +4,31 @@ import {
   Input,
   InputContainer,
   InputError,
-} from "../modules/Bill.module.scss";
-// import styles from "../modules/People.module.scss";
+} from "../modules/InputComponent.module.scss";
 
-const People = ({ value, onChange, imgSrc, validate }) => (
+const InputComponent = ({
+  inputName,
+  value,
+  onChange,
+  errorMessage,
+  imgSrc,
+  alt,
+  validate,
+}) => (
   <div>
     <div className={Title}>
-      <h3>number of people</h3>
-      {validate ? <h3>can't be zero</h3> : ""}
+      <h3>{inputName}</h3>
+      {validate ? <h3>{errorMessage}</h3> : ""}
     </div>
     <div
       className={classNames(InputContainer, {
         [InputError]: validate === true,
       })}
     >
-      <img src={imgSrc} alt="person icon" />
+      <img src={imgSrc} alt={alt} />
       <input className={Input} value={value} onChange={onChange} required />
     </div>
   </div>
 );
 
-export default People;
+export default InputComponent;

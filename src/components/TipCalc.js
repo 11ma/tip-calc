@@ -15,6 +15,7 @@ const TipCalc = () => {
   const [tip, setTip] = useState(0);
   const [bill, setBill] = useState(0);
   const [people, setPeople] = useState(0);
+  const [customInput, setCustomInput] = useState("");
   // const [validatePeople, setValidatePeople] = useState(false);
   // const [validateBill, setValidateBill] = useState(false);
 
@@ -33,6 +34,7 @@ const TipCalc = () => {
 
   const handleCustomTip = (event) => {
     const tipValue = Number.parseInt(event.target.value) / 100;
+    setCustomInput(tipValue * 100);
     setTip(tipValue);
   };
 
@@ -57,6 +59,7 @@ const TipCalc = () => {
     setBill(0);
     setPeople(0);
     setTip(0);
+    setCustomInput("");
   };
 
   return (
@@ -69,7 +72,11 @@ const TipCalc = () => {
             imgSrc={Dollar}
             // validate={validateBill}
           />
-          <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
+          <Tip
+            onClick={handlePresetTip}
+            onChange={handleCustomTip}
+            value={checkNum(customInput)}
+          />
           <People
             value={checkNum(people)}
             onChange={handlePeople}

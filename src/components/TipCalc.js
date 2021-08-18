@@ -1,7 +1,7 @@
 import { useState } from "react";
+import Tip from "./Tip";
 import InputComponent from "./InputComponent";
 import ValuePerPerson from "./ValuePerPerson";
-import Tip from "./Tip";
 import { checkNum, checkInfinity } from "./Utilities";
 
 import styles from "../modules/TipCalc.module.scss";

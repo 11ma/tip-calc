@@ -40,7 +40,10 @@ Users should be able to:
 
 - Handling decimals through controlled inputs
 - How to use ClassNames library
-- Validations doesn't have to be complex, it can be simple
+
+### todo
+
+- I need to do validations...
 
 ## Author
 

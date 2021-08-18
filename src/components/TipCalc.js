@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Tip from "./Tip";
 import InputComponent from "./InputComponent";
-import ValuePerPerson from "./ValuePerPerson";
+import ValueOutput from "./ValueOutput";
 import { checkNum, checkInfinity } from "./Utilities";
 
 import styles from "../modules/TipCalc.module.scss";
@@ -91,7 +91,7 @@ const TipCalc = () => {
         </section>
 
         <section className={styles.OutputContainer}>
-          <ValuePerPerson
+          <ValueOutput
             tipPerPerson={checkNum(tipValuePerPerson())}
             totalPerPerson={checkNum(billAmountPerPerson())}
           />

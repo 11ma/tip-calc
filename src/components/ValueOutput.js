@@ -1,4 +1,4 @@
-import styles from "../modules/ValuePerPerson.module.scss";
+import styles from "../modules/ValueOutput.module.scss";
 
 const ValuePerPerson = ({ tipPerPerson, totalPerPerson }) => (
   <>

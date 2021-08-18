@@ -1,10 +1,16 @@
 import { useState } from "react";
 import Tip from "./Tip";
 import InputComponent from "./InputComponent";
-import ValueOutput from "./ValueOutput";
+import OutputValues from "./OutputValues";
+import Reset from "./Reset";
 import { checkNum, checkInfinity } from "./Utilities";
 
-import styles from "../modules/TipCalc.module.scss";
+import {
+  Container,
+  InputContainer,
+  OutputContainer,
+  TipAmounts,
+} from "../modules/TipCalc.module.scss";
 
 // icons
 import Person from "../assets/images/icon-person.svg";
@@ -63,8 +69,8 @@ const TipCalc = () => {
 
   return (
     <>
-      <section className={styles.container}>
-        <section className={styles.InputContainer}>
+      <section className={Container}>
+        <section className={InputContainer}>
           <InputComponent
             inputName="bill"
             value={bill}
@@ -90,17 +96,20 @@ const TipCalc = () => {
           />
         </section>
 
-        <section className={styles.OutputContainer}>
-          <ValueOutput
-            tipPerPerson={checkNum(tipValuePerPerson())}
-            totalPerPerson={checkNum(billAmountPerPerson())}
-          />
-
-          <section className={styles.ResetCalc}>
-            <button type="submit" onClick={handleReset}>
-              Reset
-            </button>
-          </section>
+        <section className={OutputContainer}>
+          <div className={TipAmounts}>
+            <OutputValues
+              outputName="tip amount"
+              subtitle="/ person"
+              totalValuePerPerson={checkNum(tipValuePerPerson())}
+            />
+            <OutputValues
+              outputName="bill amount"
+              subtitle="/ person"
+              totalValuePerPerson={checkNum(billAmountPerPerson())}
+            />
+          </div>
+          <Reset onClick={handleReset} />
         </section>
       </section>
     </>

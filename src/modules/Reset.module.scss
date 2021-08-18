@@ -1,0 +1,16 @@
+.ResetCalc {
+  margin: 0.5em;
+  background-color: hsl(172, 67%, 45%);
+  border: none;
+  color: hsl(183, 100%, 15%);
+  padding: 0.5em 2em;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.ResetCalc:hover {
+  background-color: hsl(186, 14%, 43%);
+}

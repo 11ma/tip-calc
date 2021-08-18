@@ -12,8 +12,6 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
   - [What I learned / reflections](#what-i-learned-/-reflections)
 - [Author](#autor)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -43,8 +41,6 @@ Users should be able to:
 - Handling decimals through controlled inputs
 - How to use ClassNames library
 - Validations doesn't have to be complex, it can be simple
-- I added button to calculate the tip value when it was custom
-- I also changed the input layout for the ui so it was easier to calculate the tip value
 
 ## Author
 

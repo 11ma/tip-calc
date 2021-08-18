@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Bill from "./Bill";
-import ValuePerPerson from "./ValuePerPerson";
-import Reset from "./Reset";
-import People from "./People";
 import Tip from "./Tip";
+import InputComponent from "./InputComponent";
+import ValuePerPerson from "./ValuePerPerson";
+import { checkNum, checkInfinity } from "./Utilities";
 
 import styles from "../modules/TipCalc.module.scss";
 
@@ -12,96 +11,98 @@ import Person from "../assets/images/icon-person.svg";
 import Dollar from "../assets/images/icon-dollar.svg";
 
 const TipCalc = () => {
-  const [bill, setBill] = useState(0);
-  const [nPeople, setNPeople] = useState(0);
   const [tip, setTip] = useState(0);
-  const [tipPerPerson, setTipPerPerson] = useState(0);
-  const [totalPerPerson, setTotalPerPerson] = useState(0);
-  const [validatePeople, setValidatePeople] = useState(false);
-  const [validateBill, setValidateBill] = useState(false);
+  const [bill, setBill] = useState(0);
+  const [people, setPeople] = useState(0);
+  const [customInput, setCustomInput] = useState("");
+  // const [validatePeople, setValidatePeople] = useState(false);
+  // const [validateBill, setValidateBill] = useState(false);
 
   // Validation with REGEX
   const rgx = /^[+-]?\d*(?:[.,]\d*)?$/;
 
   const handleBill = (event) => {
-    setValidateBill(false);
-    let billInput = event.target.value;
+    const billInput = event.target.value;
     if (rgx.test(billInput)) setBill(billInput);
   };
 
   const handlePeople = (event) => {
-    setValidatePeople(false);
-    setNPeople(Number(event.target.value));
+    const peopleInput = event.target.value;
+    setPeople(peopleInput);
   };
 
   const handleCustomTip = (event) => {
-    let tipValue = Number.parseInt(event.target.value) / 100;
+    const tipValue = Number.parseInt(event.target.value) / 100;
+    setCustomInput(tipValue * 100);
     setTip(tipValue);
   };
 
   const handlePresetTip = (event) => {
-    let tipValue = Number.parseInt(event.target.textContent) / 100;
+    const tipValue = Number.parseInt(event.target.textContent) / 100;
     setTip(tipValue);
   };
 
-  // calculate cost
-  const HandleCosts = (event) => {
-    event.preventDefault();
-    if (!bill) setValidateBill(true);
-    if (!nPeople) setValidatePeople(true);
-    else {
-      let overallTip = bill * tip;
-      let perPersonTip = overallTip / nPeople;
-      let overallCost = Number(bill) + Number(overallTip);
-      let perPersonCost = overallCost / nPeople;
-      setTipPerPerson(perPersonTip ? perPersonTip : 0);
-      setTotalPerPerson(perPersonCost ? perPersonCost : 0);
-    }
+  const tipValuePerPerson = () => {
+    const tipAndBill = bill * tip;
+    return checkInfinity(tipAndBill / people);
+  };
+
+  const billAmountPerPerson = () => {
+    const billPerPerson = checkInfinity(bill / people);
+    return tipValuePerPerson() + billPerPerson;
   };
 
   // reset
   const handleReset = (event) => {
     event.preventDefault();
     setBill(0);
-    setNPeople(0);
+    setPeople(0);
     setTip(0);
-    setTipPerPerson(0);
-    setTotalPerPerson(0);
-    setValidateBill(false);
-    setValidatePeople(false);
+    setCustomInput("");
   };
 
   return (
     <>
-      <form className={styles.container} onSubmit={HandleCosts}>
-        <div className={styles.InputContainer}>
-          <Bill
+      <section className={styles.container}>
+        <section className={styles.InputContainer}>
+          <InputComponent
+            inputName="bill"
             value={bill}
             onChange={handleBill}
-            src={Dollar}
-            validate={validateBill}
+            imgSrc={Dollar}
+            alt="dollar bill"
+            // validate={validateBill}
+            errorMessage="can't be zero"
           />
-          <People
-            value={nPeople}
+          <Tip
+            onClick={handlePresetTip}
+            onChange={handleCustomTip}
+            value={checkNum(customInput)}
+          />
+          <InputComponent
+            inputName="number of people"
+            value={checkNum(people)}
             onChange={handlePeople}
-            src={Person}
-            validate={validatePeople}
+            imgSrc={Person}
+            alt="person icon"
+            // validate={validatePeople}
+            errorMessage="can't be zero"
           />
-          <Tip onClick={handlePresetTip} onChange={handleCustomTip} />
-        </div>
-        {/* <h3>tip value is {tip * 100}%</h3> */}
-        <div className={styles.OutputContainer}>
+        </section>
+
+        <section className={styles.OutputContainer}>
           <ValuePerPerson
-            tipPerPerson={tipPerPerson}
-            totalPerPerson={totalPerPerson}
+            tipPerPerson={checkNum(tipValuePerPerson())}
+            totalPerPerson={checkNum(billAmountPerPerson())}
           />
 
-          <div className={styles.ResetCalc}>
-            <button type="submit">calculate</button>
-            <Reset onClick={handleReset} />
-          </div>
-        </div>
-      </form>
+          <section className={styles.ResetCalc}>
+            <button type="submit" onClick={handleReset}>
+              Reset
+            </button>
+          </section>
+        </section>
+      </section>
     </>
   );
 };

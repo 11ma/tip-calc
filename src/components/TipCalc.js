@@ -38,9 +38,11 @@ const TipCalc = () => {
   };
 
   const handleCustomTip = (event) => {
-    const tipValue = Number.parseInt(event.target.value) / 100;
-    setCustomInput(tipValue * 100);
-    setTip(tipValue);
+    const tipValue = event.target.value;
+    if (rgx.test(tipValue)) {
+      setCustomInput(tipValue);
+      setTip(tipValue / 100);
+    }
   };
 
   const handlePresetTip = (event) => {

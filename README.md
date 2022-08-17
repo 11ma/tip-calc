@@ -44,7 +44,3 @@ Users should be able to:
 ### todo
 
 - I need to do validations...
-
-## Author
-
-- Twitter - [@mlaoae](https://www.twitter.com/mlaoae)
